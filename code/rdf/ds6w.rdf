@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+]>
+
+<rdf:RDF
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:ds6w="http://www.3ds.com/vocabularies/ds6w/"
+  xml:base="http://www.3ds.com/vocabularies/ds6w/">
+
+<owl:Ontology rdf:about="http://www.3ds.com/vocabularies/ds6w/">
+  <rdfs:label xml:lang="en">6W Vocabulary</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This ontology defines the DS Corporate vocabulary for 6W tags.</rdfs:comment>
+  <owl:versionInfo>R2015x</owl:versionInfo>
+</owl:Ontology>
+
+<owl:Class rdf:about="PeopleAndOrganization">
+  <rdfs:label xml:lang="en">People And Organization</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">People And Organization</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="SocialContent">
+  <rdfs:label xml:lang="en">Social Content</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Social Content</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="Document">
+  <rdfs:label xml:lang="en">Document</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Document</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="3dModel">
+  <rdfs:subClassOf rdf:resource="Document"/>
+  <rdfs:label xml:lang="en">3D Model</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">3D Model</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="Drawing">
+  <rdfs:subClassOf rdf:resource="Document"/>
+  <rdfs:label xml:lang="en">Drawing</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Drawing</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="Picture">
+  <rdfs:subClassOf rdf:resource="Document"/>
+  <rdfs:label xml:lang="en">Picture</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Picture</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="OfficeDocument">
+  <rdfs:subClassOf rdf:resource="Document"/>
+  <rdfs:label xml:lang="en">Office Document</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Office Document</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="MiscDocument">
+  <rdfs:subClassOf rdf:resource="Document"/>
+  <rdfs:label xml:lang="en">Miscellaneoous Document</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Miscellaneoous Document</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="Sound">
+  <rdfs:subClassOf rdf:resource="Document"/>
+  <rdfs:label xml:lang="en">Sound</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Sound</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="Video">
+  <rdfs:subClassOf rdf:resource="Document"/>
+  <rdfs:label xml:lang="en">Video</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Video</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="Product">
+  <rdfs:label xml:lang="en">Product</rdfs:label>
+  <rdfs:comment rdf:datatype="&xsd;string">Product</rdfs:comment>
+</owl:Class>
+
+<owl:DatatypeProperty rdf:about="what">
+  <rdfs:label xml:lang="en">What</rdfs:label>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">What</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="type">
+  <rdfs:label xml:lang="en">Type</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Type of the object</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="docExtension">
+  <rdfs:label xml:lang="en">File type</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Document mime Type (eg .doc, .txt, .CATPart, .Drawing)</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="root">
+  <rdfs:label xml:lang="en">Root</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;boolean"/>
+  <rdfs:comment xml:lang="en">is the node a root</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="leaf">
+  <rdfs:label xml:lang="en">Leaf</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;boolean"/>
+  <rdfs:comment xml:lang="en">is the node a leaf</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="contentStructure">
+  <rdfs:label xml:lang="en">Content Structure</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">is the node a Top Level, an Intermediate, or a Leaf node</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="contenttype">
+  <rdfs:label xml:lang="en">Content Type</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Content Type for Data Topics and Image Topics</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="social">
+  <rdfs:label xml:lang="en">Social</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Social</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="person">
+  <rdfs:label xml:lang="en">Person</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="social"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Person</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="skill">
+  <rdfs:label xml:lang="en">Skill</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="person"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">As Skill</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="businessSkill">
+  <rdfs:label xml:lang="en">Skills and Knowledge</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="person"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Skills of the user</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="endorsements">
+  <rdfs:label xml:lang="en">Likes</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="social"/>
+  <rdfs:range rdf:resource="&xsd;integer"/>
+  <rdfs:comment xml:lang="en">Number of Endorsement</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="question">
+  <rdfs:label xml:lang="en">Question</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="social"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Question</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="answers">
+  <rdfs:label xml:lang="en">Answers</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="question"/>
+  <rdfs:range rdf:resource="&xsd;integer"/>
+  <rdfs:comment xml:lang="en">Number of Answers</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="comments">
+  <rdfs:label xml:lang="en">Comments</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="social"/>
+  <rdfs:range rdf:resource="&xsd;integer"/>
+  <rdfs:comment xml:lang="en">Number of Comments</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="when">
+  <rdfs:label xml:lang="en">When</rdfs:label>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">When</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="created">
+  <rdfs:label xml:lang="en">Creation Date</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="when"/>
+  <rdfs:range rdf:resource="&xsd;dateTime"/>
+  <rdfs:comment xml:lang="en">Creation date</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="modified">
+  <rdfs:label xml:lang="en">Modification Date</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="when"/>
+  <rdfs:range rdf:resource="&xsd;dateTime"/>
+  <rdfs:comment xml:lang="en">Modification time of object for example applicable for posts, products ..</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="community">
+  <rdfs:label xml:lang="en">Community</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="context"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Community</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="source">
+  <rdfs:label xml:lang="en">Source URL</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="where"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">source URL</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="dataSource">
+  <rdfs:label xml:lang="en">Data Source</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="source"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">To specify the source storage from where the date originates</rdfs:comment>
+</owl:DatatypeProperty>
+
+
+<owl:DatatypeProperty rdf:about="who">
+  <rdfs:label xml:lang="en">Who</rdfs:label>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Who</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="businessRole">
+  <rdfs:label xml:lang="en">Roles</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="who"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Business Roles of the user</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="responsible">
+  <rdfs:label xml:lang="en">Responsible</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="who"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Responsible name of the resource</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="publishedBy">
+  <rdfs:label xml:lang="en">Published By</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="who"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Name of the person who published</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="label">
+  <rdfs:label xml:lang="en">Title</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Label               *** NOT DISPLAYED IN TAGGER ***</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="identifier">
+  <rdfs:label xml:lang="en">Name</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Identifier      *** NOT DISPLAYED IN TAGGER ***</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="description">
+  <rdfs:label xml:lang="en">Description</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Description  *** NOT DISPLAYED IN TAGGER ***</rdfs:comment>
+</owl:DatatypeProperty>
+</rdf:RDF>

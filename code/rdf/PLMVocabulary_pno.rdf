@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY ds6w "http://www.3ds.com/vocabularies/ds6w/" >
+]>
+
+<rdf:RDF
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:ds6w="http://www.3ds.com/vocabularies/ds6w/"
+  xmlns:pno="http://www.3ds.com/vocabularies/pno/"
+  xml:base="http://www.3ds.com/vocabularies/pno/">
+  
+     
+  <owl:Ontology rdf:about="http://www.3ds.com/vocabularies/pno/">
+    <rdfs:label xml:lang="en">3DS PnO Vocabulary</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This ontology defines the DS People and Organization vocabulary.</rdfs:comment>
+    <owl:versionInfo>R2016x</owl:versionInfo>
+  </owl:Ontology>
+
+  <owl:Class rdf:about="Person">
+    <rdfs:label xml:lang="en">Person</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To represent a named human</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&ds6w;PeopleAndOrganization"/>
+  </owl:Class>
+person label  Person
+person comment 
+
+
+
+  <owl:Class rdf:about="Organization">
+    <rdfs:label xml:lang="en">Organization</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To represent an organization within a company</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&ds6w;PeopleAndOrganization"/>
+  </owl:Class>
+
+  <owl:Class rdf:about="Group">
+    <rdfs:label xml:lang="en">Group</rdfs:label>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">To represent a role that a group of person can play.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&ds6w;PeopleAndOrganization"/>
+  </owl:Class>
+
+</rdf:RDF>

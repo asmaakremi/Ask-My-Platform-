@@ -1,0 +1,57 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dsqt: <http://www.3ds.com/RDF/Corpus/dsqt/> .
+@prefix ds6w: <http://www.3ds.com/vocabularies/ds6w/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pno: <http://www.3ds.com/vocabularies/pno/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix swym: <http://www.3ds.com/vocabularies/swym/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ds6w: a owl:Ontology ;
+    rdfs:label "6W Vocabulary"@en ;
+    rdfs:comment "This ontology defines the DS Corporate vocabulary for 6W tags."^^xsd:string ;
+    owl:versionInfo "R2015x" .
+
+pno: a owl:Ontology ;
+    rdfs:label "3DS PnO Vocabulary"@en ;
+    rdfs:comment "This ontology defines the DS People and Organization vocabulary."^^xsd:string ;
+    owl:versionInfo "R2016x" .
+
+ds6w:VpmReference a owl:Class ;
+    rdfs:label "VpmReference"@en ;
+    rdfs:comment "Physical Product archetype. Represents physical products within the system and is equivalent to any general product classification."@en .
+
+pno:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:comment "Represents an individual person."@en .
+
+ds6w:type a owl:DatatypeProperty ;
+    rdfs:label "Type"@en ;
+    rdfs:comment "Specifies the type of object."@en ;
+    rdfs:domain [ rdf:unionOf ( ds6w:VpmReference ) ] ;
+    rdfs:range xsd:string .
+
+ds6w:modified a owl:DatatypeProperty ;
+    rdfs:label "Modified"@en ;
+    rdfs:comment "Date and time of last modification. Expected format: 'YYYY-MM-DD'T'hh:mm:ss'Z' (ISO 8601)"@en ;
+    rdfs:domain [ rdf:unionOf ( ds6w:VpmReference ) ] ;
+    rdfs:range xsd:dateTime .
+
+ds6w:created a owl:DatatypeProperty ;
+    rdfs:label "Created"@en ;
+    rdfs:comment "Date and time of creation. Expected format: 'YYYY-MM-DD'T'hh:mm:ss'Z' (ISO 8601)"@en ;
+    rdfs:domain [ rdf:unionOf ( ds6w:VpmReference ) ] ;
+    rdfs:range xsd:dateTime .
+
+ds6w:lastModifiedBy a owl:ObjectProperty ;
+    rdfs:label "Last Modified By"@en ;
+    rdfs:comment "The person who did the last modification."@en ;
+    rdfs:domain [ rdf:unionOf ( ds6w:VpmReference ) ] ;
+    rdfs:range pno:Person .
+
+ds6w:responsible a owl:ObjectProperty ;
+    rdfs:label "Responsible"@en ;
+    rdfs:comment "The person responsible for the entity."@en ;
+    rdfs:domain [ rdf:unionOf ( ds6w:VpmReference ) ] ;
+    rdfs:range pno:Person .

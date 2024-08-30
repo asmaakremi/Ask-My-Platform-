@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY xml "http://www.w3.org/XML/1998/namespace" >
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+  <!ENTITY ds6w "http://www.w3.org/2002/07/ds6w/" >
+]>
+
+<rdf:RDF
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:owl="http://www.w3.org/2002/07/owl#"
+  xmlns:ds6w="http://www.w3.org/2002/07/ds6w/"
+  xmlns:swym="http://www.3ds.com/vocabularies/swym/"
+  xml:base="http://www.3ds.com/vocabularies/swym/">
+
+<owl:Ontology rdf:about="http://www.3ds.com/vocabularies/swym/">
+  <rdfs:label xml:lang="en">3DSwym Vocabulary</rdfs:label>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">This ontology defines 3DSwym vocabulary for 6W tags.</rdfs:comment>
+  <owl:versionInfo>R2016x</owl:versionInfo>
+</owl:Ontology>
+
+<owl:DatatypeProperty rdf:about="whatCommunityTag">
+  <rdfs:label xml:lang="en">Community Tag</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="&ds6w;what"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">What Community Tag for swym content</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="whenCommunityTag">
+  <rdfs:label xml:lang="en">Community Tag</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="&ds6w;when"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">When Community Tag for swym content</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="whereCommunityTag">
+  <rdfs:label xml:lang="en">Community Tag</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="&ds6w;where"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Where Community Tag for swym content</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="whoCommunityTag">
+  <rdfs:label xml:lang="en">Community Tag</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="&ds6w;who"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Who Community Tag for swym content</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="whyCommunityTag">
+  <rdfs:label xml:lang="en">Community Tag</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="&ds6w;why"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">Why Community Tag for swym content</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="howCommunityTag">
+  <rdfs:label xml:lang="en">Community Tag</rdfs:label>
+  <rdfs:subPropertyOf rdf:resource="&ds6w;how"/>
+  <rdfs:range rdf:resource="&xsd;string"/>
+  <rdfs:comment xml:lang="en">How Community Tag for swym content</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="Community">
+    <rdfs:label xml:lang="en">Community</rdfs:label>
+    <rdfs:comment xml:lang="en">A 3DSwym community</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&ds6w;CollaborativePlaces"/>
+</owl:Class>
+
+<owl:Class rdf:about="DirectMessage">
+    <rdfs:label xml:lang="en">Direct Message</rdfs:label>
+    <rdfs:comment xml:lang="en">A 3DSwym direct message</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="&ds6w;CollaborativePlaces"/>
+</owl:Class>
+
+<owl:Class rdf:about="Post">
+    <rdfs:label xml:lang="en">Post</rdfs:label>
+    <rdfs:comment xml:lang="en">A post from 3DSwym</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&ds6w;SocialContent"/>
+</owl:Class>
+
+<owl:Class rdf:about="Question">
+    <rdfs:label xml:lang="en">Question</rdfs:label>
+    <rdfs:comment xml:lang="en">A particular type of content in 3DSwym</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&ds6w;SocialContent"/>
+</owl:Class>
+
+<owl:Class rdf:about="Idea">
+    <rdfs:label xml:lang="en">Idea</rdfs:label>
+    <rdfs:comment xml:lang="en">A particular type of content in 3DSwym</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&ds6w;SocialContent"/>
+</owl:Class>
+
+
+
+<owl:Class rdf:about="RichMedia">
+    <rdfs:label xml:lang="en">Rich media</rdfs:label>
+    <rdfs:comment xml:lang="en">A 3D model, a picture, a video etc.</rdfs:comment>
+	<rdfs:subClassOf rdf:resource="&ds6w;SocialContent"/>
+</owl:Class>
+
+<owl:Class rdf:about="Picture">
+    <rdfs:label xml:lang="en">Picture</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="Document">
+    <rdfs:label xml:lang="en">Document</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="Sound">
+    <rdfs:label xml:lang="en">Sound</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="Video">
+    <rdfs:label xml:lang="en">Video</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="3dModel">
+    <rdfs:label xml:lang="en">3D model</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="Drawing">
+    <rdfs:label xml:lang="en">Drawing</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="AnimatedPicture">
+    <rdfs:label xml:lang="en">Animated Picture</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="SimulationMedia">
+    <rdfs:label xml:lang="en">Simulation Media</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="Story">
+    <rdfs:label xml:lang="en">Story</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+<owl:Class rdf:about="Sketch">
+    <rdfs:label xml:lang="en">Sketch</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+
+<owl:Class rdf:about="HomeByMeMedia">
+    <rdfs:label xml:lang="en">HomeByMe Media</rdfs:label>
+	<rdfs:subClassOf rdf:resource="RichMedia"/>
+</owl:Class>
+
+</rdf:RDF>

@@ -1,0 +1,162 @@
+
+** RDF Data Model and Ontology **
+    @prefix vpmReference: <http://www.3ds.com/RDF/ontology/archetype/vpmReference#> .
+    @prefix physicalProduct: <http://www.3ds.com/RDF/ontology/universe/physicalProduct#> .
+    @prefix product: <http://www.3ds.com/RDF/ontology/universe/product#> .
+    @prefix archetype: <http://www.3ds.com/RDF/ontology/archetype#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+    @prefix owl: <http://www.w3.org/2002/07/owl#> 
+    @prefix prov: <http://www.w3.org/ns/prov#> 
+    @prefix ds6w: <http://www.w3.org/ds6w#> 
+    @prefix dsqt: <http://www.3ds.com/RDF/Corpus/dsqt/> 
+    @prefix pno: <http://www.3ds.com/RDF/ontology/archetype/person#> 
+    @prefix swym: <http://www.3ds.com/RDF/ontology/archetype/swym#>
+    vpmReference: a owl:Ontology ;
+        rdfs:comment "Physical Product archetype  .Represents physical products within the system and is equivalent to any general product classification. "@en .
+    pno: a owl:Ontology ;
+        rdfs:comment "An ontology defining properties of persons."@en .
+    swym: a owl:Ontology ;
+        rdfs:label "SWYM Social Media Ontology"@en ;
+        rdfs:comment "An ontology for describing social media structures including posts, ideas comments, and user interactions."@en ;
+    vpmReference:VPMReference rdf:type owl:Class ;
+        rdfs:subClassOf archetype:Archetype ;
+        rdfs:comment "Physical Product and is equivalent to any general product classification archetype"@en .
+    pno:Person rdf:type owl:Class ;
+        rdfs:label "Person"@en ;
+        rdfs:comment "Represents an individual person."@en .
+    physicalProduct:PhysicalProduct rdf:type owl:Class ;
+        owl:equivalentClass vpmReference:VPMReference .
+    product:Product rdf:type owl:Class ;
+        owl:equivalentClass vpmReference:VPMReference .
+    Document rdf:type owl:Class ;
+        rdfs:comment "General class for documents."@en .
+    SocialContent rdf:type owl:Class ;
+        rdfs:comment "Content generated in social platforms, like posts, comments, or likes."@en .
+    PLMDMT_DocCustom rdf:type owl:Class ;
+        rdfs:subClassOf Document ;
+        rdfs:comment "A customized document type within the PLM system."@en .
+    PLMDMTDocument rdf:type owl:Class ;
+        rdfs:subClassOf Document ;
+        rdfs:comment "A standard document type for engineering documents within the PLM system."@en .
+    AecMember rdf:type owl:Class ;
+        rdfs:subClassOf pno:Person ;
+        rdfs:comment "A member of an AEC (architecture, engineering, and construction) project."@en .
+    3DShape rdf:type owl:Class ;
+        rdfs:comment "Represents a 3D shape model in the system."@en .
+    swym:Post rdf:type owl:Class ;
+        rdfs:subClassOf SocialContent ;
+        rdfs:comment "A post within the social collaboration platform."@en .
+    swym:Idea rdf:type owl:Class ;
+        rdfs:subClassOf SocialContent ;
+        rdfs:comment "an idea within the social collaboration platform."@en .
+
+    BusinessRoleClass rdf:type owl:Class;
+        rdfs:label "Business Role Class"@en;
+        rdfs:comment "A class of roles that can be held by a person."@en.
+
+    :StrategyAndManagement rdf:type BusinessRoleClass;
+        rdfs:label "Strategy & Management"@en.
+
+    :VicePresident rdf:type ds6w:BusinessRoleClass;
+        rdfs:label "Vice President or VP "@en.
+
+    :Engineer rdf:type BusinessRoleClass;
+        rdfs:label "Engineer"@en.
+
+    :SoftwareEngineer rdf:type BusinessRoleClass;
+        rdfs:label "Software Engineer"@en.
+
+    :DataScientist rdf:type BusinessRoleClass;
+        rdfs:label "Data Scientist"@en.
+
+    :StrategyAndManagement owl:equivalentClass :VicePresident.
+
+    ds6w:type rdf:type owl:DatatypeProperty;
+        rdfs:label "Type"@en;
+        rdfs:comment "Specifies the type of object."@en;
+        rdfs:domain [ rdf:unionOf (PLMDMT_DocCustom PLMDMTDocument AecMember pno:Person vpmReference:VPMReference Document 3DShape swym:Post swym:Idea ) ];
+        rdfs:range xsd:string.
+    ds6w:modified rdf:type owl:DatatypeProperty;
+        rdfs:label "Modified"@en;
+        rdfs:comment "Date and time of last modification. Expected format: 'YYYY-MM-DD'T'hh:mm:ss'Z' (ISO 8601)"@en;
+        rdfs:domain [ rdf:unionOf (PLMDMT_DocCustom PLMDMTDocument AecMember vpmReference:VPMReference Document 3DShape swym:Post swym:Idea ) ];
+        rdfs:range xsd:dateTime.
+    ds6w:created rdf:type owl:DatatypeProperty;
+        rdfs:label "Created"@en;
+        rdfs:comment "Date and time of last modification. Expected format: 'YYYY-MM-DD'T'hh:mm:ss'Z' (ISO 8601)"@en;
+        rdfs:domain [ rdf:unionOf (PLMDMT_DocCustom PLMDMTDocument AecMember vpmReference:VPMReference Document 3DShape swym:Post swym:Idea ) ];
+        rdfs:range xsd:dateTime.
+    ds6w:lastModifiedBy rdf:type owl:ObjectProperty;
+        rdfs:label "Last Modified By"@en;
+        rdfs:comment "The person who did the last modification."@en;
+        rdfs:domain [ rdf:unionOf (PLMDMT_DocCustom PLMDMTDocument AecMember vpmReference:VPMReference Document 3DShape swym:Post swym:Idea ) ];
+        rdfs:range pno:Person.
+    ds6w:responsible rdf:type owl:ObjectProperty;
+        rdfs:label "Responsible"@en;
+        rdfs:comment "The person responsible for the entity."@en;
+        rdfs:domain [ rdf:unionOf (PLMDMT_DocCustom PLMDMTDocument AecMember vpmReference:VPMReference Document 3DShape swym:Post swym:Idea ) ];
+        rdfs:range pno:Person.
+    ds6w:Comments rdf:type owl:DatatypeProperty;
+        rdfs:label "Comments"@en;
+        rdfs:comment "Number of comments for the post, idea or any subtype of social content."@en;
+        rdfs:domain  [ rdf:unionOf(swym:Post swym:Idea)] ;
+        rdfs:range xsd:integer.
+    ds6w:endorsements rdf:type owl:DatatypeProperty;
+        rdfs:label "Likes"@en;
+        rdfs:comment "Number of Likes for the post or idea or any subtype of social content."@en;
+        rdfs:domain [ rdf:unionOf (swym:Post swym:Idea)] ;
+        rdfs:range xsd:integer.
+    ds6w:contentStructure rdf:type owl:DatatypeProperty;
+        rdfs:label "Content Structure"@en;
+        rdfs:comment "Content structure of the product, indicating its hierarchy within the overall design or assembly . This property is applicable exclusively to instances of the vpmReference:VPMReference class"@en;
+        rdfs:domain [ rdf:unionOf (vpmReference:VPMReference 3DShape) ];
+        rdfs:range xsd:string;
+        owl:oneOf ("Root" "Leaf" "Intermediate" "Standalone").
+    ds6w:docExtension rdf:type owl:DatatypeProperty;
+        rdfs:label "Document Extension"@en;
+        rdfs:comment "The file format of the document, restricted to specific extensions."@en;
+        rdfs:domain [ rdf:unionOf (PLMDMT_DocCustom PLMDMTDocument Document ) ];
+        rdfs:range xsd:string;
+        owl:oneOf ("jpg" "idx" "docx" "pdf" "stp" "xls" "doc" "txt").
+    ds6w:BusinessRole rdf:type owl:ObjectProperty;
+        rdfs:label "Business Role"@en;
+        rdfs:comment "Links a person to their business role, job, position."@en;
+        rdfs:domain pno:Person;
+        rdfs:range BusinessRoleClass.
+
+    # Example triple : 
+    :doc001 rdf:type Document ;
+        ds6w:type "PLMDMTDocument" ;
+        ds6w:docExtension "pdf" ;
+        ds6w:created "2024-06-01T00:00:00Z" ;
+        ds6w:modified "2024-06-05T00:00:00Z" ;
+        ds6w:responsible person123 ;
+        ds6w:lastModifiedBy person124 ;
+
+    :product01 rdf:type VpmReference ;
+        ds6w:type "VpmReference" ;
+        ds6w:created "2024-06-01T00:00:00Z" ;
+        ds6w:modified "2024-06-05T00:00:00Z" ;
+        ds6w:responsible person123 ;
+        ds6w:lastModifiedBy person124 ;
+        ds6w:contentStructure "Root".
+
+    pno:person123 rdf:type pno:Person ;
+        pno:name "person123" ;
+        ds6w:businessRole "Strategy & Managemenent" ;
+   
+    pno:person124 rdf:type pno:Person ;
+        pno:name "person124" ;
+        ds6w:businessRole "Data Scientist" ;
+
+    swym:post001 rdf:type swym:Post ;
+        ds6w:Comments 5 ;
+        ds6w:endorsements 10.
+        ds6w:lastModifiedBy person124 ;
+
+    swym:idea001 rdf:type swym:Idea ;
+        ds6w:Comments 4 ;
+        ds6w:endorsements 1.
+        ds6w:lastModifiedBy person124 ;
